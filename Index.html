@@ -1,0 +1,2372 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>NOVAIX AI</title>
+
+<style>
+
+/* =====================================================
+   DASAR
+===================================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+    color:#fff;
+    overflow-x:hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            #172d63 0%,
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            #24134d 0%,
+            transparent 30%
+        ),
+        #030713;
+}
+
+
+/* =====================================================
+   LOGO POJOK
+===================================================== */
+
+.corner-logo{
+    position:fixed;
+
+    top:14px;
+    right:14px;
+
+    z-index:20;
+
+    padding:7px 11px;
+
+    border-radius:12px;
+
+    background:rgba(5,15,35,.88);
+
+    border:1px solid rgba(100,180,255,.35);
+
+    color:#7ecaff;
+
+    font-size:11px;
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    box-shadow:
+        0 0 12px rgba(50,130,255,.18);
+}
+
+
+/* =====================================================
+   GALAXY — RINGAN
+===================================================== */
+
+.galaxy{
+    position:fixed;
+    inset:0;
+
+    z-index:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+}
+
+/* bintang statis */
+
+.stars{
+    position:absolute;
+    inset:0;
+
+    opacity:.75;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1.5px
+        );
+
+    background-size:78px 78px;
+}
+
+/* bintang kedua */
+
+.stars2{
+    position:absolute;
+    inset:0;
+
+    opacity:.4;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(130,190,255,.8) 1px,
+            transparent 1.5px
+        );
+
+    background-size:137px 137px;
+
+    background-position:35px 20px;
+}
+
+
+/* nebula ringan */
+
+.nebula{
+    position:absolute;
+
+    width:380px;
+    height:380px;
+
+    left:-180px;
+    top:-160px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(83,72,220,.22),
+            transparent 68%
+        );
+
+    animation:
+        nebulaFloat 12s ease-in-out infinite alternate;
+}
+
+.nebula.two{
+    width:420px;
+    height:420px;
+
+    left:auto;
+    top:auto;
+
+    right:-210px;
+    bottom:-200px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(70,90,255,.18),
+            transparent 68%
+        );
+
+    animation-duration:16s;
+}
+
+@keyframes nebulaFloat{
+
+    from{
+        transform:translate3d(0,0,0);
+    }
+
+    to{
+        transform:translate3d(20px,15px,0);
+    }
+
+}
+
+
+/* =====================================================
+   PLANET
+===================================================== */
+
+.planet{
+    position:absolute;
+
+    width:48px;
+    height:48px;
+
+    right:9%;
+    top:17%;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #d9c5ff,
+            #7453ca 42%,
+            #171039 100%
+        );
+
+    box-shadow:
+        0 0 18px rgba(120,90,255,.28);
+
+    animation:
+        planetFloat 6s ease-in-out infinite;
+}
+
+.planet::after{
+    content:"";
+
+    position:absolute;
+
+    width:72px;
+    height:17px;
+
+    left:-12px;
+    top:16px;
+
+    border:
+        1px solid
+        rgba(180,160,255,.4);
+
+    border-radius:50%;
+
+    transform:rotate(-20deg);
+}
+
+@keyframes planetFloat{
+
+    50%{
+        transform:translateY(8px);
+    }
+
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container{
+    position:relative;
+
+    z-index:5;
+
+    width:100%;
+    max-width:500px;
+
+    margin:auto;
+
+    padding:
+        65px
+        20px
+        60px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.title{
+    font-size:34px;
+
+    font-weight:bold;
+
+    letter-spacing:5px;
+
+    text-align:center;
+
+    color:#eaf7ff;
+
+    text-shadow:
+        0 0 10px rgba(80,180,255,.8),
+        0 0 25px rgba(70,100,255,.35);
+}
+
+.subtitle{
+    margin-top:7px;
+    margin-bottom:20px;
+
+    color:#91a6ca;
+
+    font-size:13px;
+
+    letter-spacing:1px;
+
+    text-align:center;
+}
+
+
+/* =====================================================
+   ROBOT AREA
+===================================================== */
+
+.robot-area{
+
+    position:relative;
+
+    width:280px;
+    height:285px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    animation:
+        floatRobot 4.5s ease-in-out infinite;
+}
+
+@keyframes floatRobot{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+}
+
+
+/* cahaya belakang */
+
+.robot-glow{
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(50,145,255,.22),
+            transparent 70%
+        );
+}
+
+
+/* bayangan */
+
+.robot-shadow{
+    position:absolute;
+
+    bottom:16px;
+
+    width:110px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:
+        rgba(50,130,255,.25);
+}
+
+
+/* =====================================================
+   ROBOT CHIBI
+===================================================== */
+
+.robot{
+    position:relative;
+
+    width:180px;
+    height:178px;
+
+    border-radius:
+        45%
+        45%
+        43%
+        43%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f3fbff 0%,
+            #b7d4ed 20%,
+            #58799e 48%,
+            #1b304c 75%,
+            #091323 100%
+        );
+
+    border:
+        2px solid
+        rgba(115,195,255,.9);
+
+    box-shadow:
+        inset 8px 8px 14px
+        rgba(255,255,255,.3),
+
+        inset -12px -15px 22px
+        rgba(0,0,0,.5),
+
+        0 0 18px
+        rgba(50,150,255,.45);
+
+    transform-style:preserve-3d;
+
+    animation:
+        headMove 8s ease-in-out infinite;
+}
+
+
+/* kepala menoleh */
+
+@keyframes headMove{
+
+    0%,100%{
+        transform:
+            rotateY(0deg)
+            rotateZ(0deg);
+    }
+
+    20%{
+        transform:
+            rotateY(-7deg)
+            rotateZ(-1deg);
+    }
+
+    35%{
+        transform:
+            rotateY(6deg)
+            rotateZ(1deg);
+    }
+
+    55%{
+        transform:
+            rotateY(2deg);
+    }
+
+    75%{
+        transform:
+            rotateY(-5deg);
+    }
+
+}
+
+
+/* =====================================================
+   ANTENNA
+===================================================== */
+
+.antenna{
+    position:absolute;
+
+    width:6px;
+    height:28px;
+
+    top:-27px;
+    left:87px;
+
+    border-radius:8px;
+
+    background:
+        linear-gradient(
+            #c8edff,
+            #4b8cff
+        );
+}
+
+.antenna-light{
+    position:absolute;
+
+    width:14px;
+    height:14px;
+
+    top:-10px;
+    left:-4px;
+
+    border-radius:50%;
+
+    background:#9fe1ff;
+
+    box-shadow:
+        0 0 10px
+        rgba(60,180,255,.8);
+
+    animation:
+        lightPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes lightPulse{
+
+    50%{
+        transform:scale(.65);
+        opacity:.55;
+    }
+
+}
+
+
+/* =====================================================
+   TELINGA
+===================================================== */
+
+.ear{
+    position:absolute;
+
+    width:20px;
+    height:52px;
+
+    top:63px;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #13263f,
+            #557da4,
+            #14263d
+        );
+
+    border:
+        2px solid
+        #62b8ff;
+}
+
+.ear.left{
+    left:-15px;
+}
+
+.ear.right{
+    right:-15px;
+}
+
+
+/* =====================================================
+   WAJAH
+===================================================== */
+
+.face{
+    position:absolute;
+
+    left:18px;
+    top:31px;
+
+    width:140px;
+    height:108px;
+
+    border-radius:40px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #06162d,
+            #113454,
+            #030a16
+        );
+
+    border:
+        2px solid
+        rgba(110,195,255,.65);
+
+    box-shadow:
+        inset 0 0 15px
+        rgba(50,150,255,.2);
+
+    overflow:hidden;
+}
+
+
+/* =====================================================
+   MATA
+===================================================== */
+
+.eyes{
+    position:absolute;
+
+    top:24px;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+}
+
+.eye{
+    position:relative;
+
+    width:39px;
+    height:43px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            #fff 0%,
+            #bcecff 12%,
+            #4bb7ff 40%,
+            #1373e8 72%,
+            #062d70 100%
+        );
+
+    box-shadow:
+        0 0 10px
+        rgba(70,190,255,.7);
+
+    animation:
+        blink 6s infinite;
+}
+
+@keyframes blink{
+
+    0%,43%,47%,100%{
+        transform:scaleY(1);
+    }
+
+    45%,46%{
+        transform:scaleY(.08);
+    }
+
+}
+
+
+/* pupil */
+
+.pupil{
+    position:absolute;
+
+    width:14px;
+    height:21px;
+
+    left:12px;
+    top:10px;
+
+    border-radius:50%;
+
+    background:#020817;
+
+    animation:
+        eyeLook 5s ease-in-out infinite;
+}
+
+@keyframes eyeLook{
+
+    0%,20%,100%{
+        transform:translateX(0);
+    }
+
+    30%,40%{
+        transform:translateX(-6px);
+    }
+
+    50%,65%{
+        transform:translateX(6px);
+    }
+
+    75%{
+        transform:translateX(0);
+    }
+
+}
+
+
+/* =====================================================
+   MULUT
+===================================================== */
+
+.mouth{
+    position:absolute;
+
+    width:42px;
+    height:13px;
+
+    left:49px;
+    top:78px;
+
+    border-bottom:
+        3px solid
+        #70c9ff;
+
+    border-radius:
+        0 0 30px 30px;
+
+    transition:.15s;
+}
+
+
+/* =====================================================
+   TANGAN ROBOT
+===================================================== */
+
+.robot-hand{
+    position:absolute;
+
+    width:42px;
+    height:65px;
+
+    top:115px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #9fc2df,
+            #3d6084,
+            #14263d
+        );
+
+    border:
+        2px solid
+        rgba(105,185,255,.7);
+
+    z-index:-1;
+}
+
+.robot-hand.left{
+    left:-30px;
+
+    transform:
+        rotate(18deg);
+}
+
+.robot-hand.right{
+    right:-30px;
+
+    transform:
+        rotate(-18deg);
+}
+
+
+/* tangan bergerak sedikit */
+
+.robot-hand.right{
+    animation:
+        handWave 5s ease-in-out infinite;
+}
+
+@keyframes handWave{
+
+    0%,75%,100%{
+        transform:rotate(-18deg);
+    }
+
+    80%,88%{
+        transform:rotate(-30deg);
+    }
+
+}
+
+
+/* =====================================================
+   CHAT BUBBLE
+===================================================== */
+
+.chat-bubble{
+    position:absolute;
+
+    width:205px;
+
+    right:-60px;
+    top:-8px;
+
+    padding:12px 14px;
+
+    border-radius:
+        18px
+        18px
+        5px
+        18px;
+
+    background:
+        rgba(8,25,52,.96);
+
+    border:
+        1px solid
+        rgba(100,190,255,.55);
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,.25);
+
+    font-size:13px;
+
+    line-height:1.45;
+
+    z-index:10;
+}
+
+.chat-name{
+    display:block;
+
+    color:#71c5ff;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    margin-bottom:3px;
+}
+
+
+/* =====================================================
+   CHAT
+===================================================== */
+
+.chat-box{
+    width:100%;
+
+    max-height:300px;
+
+    overflow-y:auto;
+
+    padding:8px 3px;
+
+    margin-bottom:10px;
+}
+
+.message{
+    max-width:84%;
+
+    padding:11px 14px;
+
+    margin-bottom:9px;
+
+    border-radius:16px;
+
+    font-size:13px;
+
+    line-height:1.5;
+
+    animation:
+        messageIn .2s ease;
+}
+
+@keyframes messageIn{
+
+    from{
+        opacity:0;
+        transform:translateY(5px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.message.user{
+    margin-left:auto;
+
+    background:
+        linear-gradient(
+            145deg,
+            #367fdc,
+            #254ca7
+        );
+
+    border-bottom-right-radius:5px;
+}
+
+.message.bot{
+    margin-right:auto;
+
+    background:
+        linear-gradient(
+            145deg,
+            #19385e,
+            #08172f
+        );
+
+    border:
+        1px solid
+        rgba(90,170,255,.2);
+
+    border-bottom-left-radius:5px;
+}
+
+.message-name{
+    display:block;
+
+    color:#72c6ff;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    margin-bottom:3px;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.input-area{
+    width:100%;
+
+    display:flex;
+
+    gap:8px;
+}
+
+input{
+    flex:1;
+
+    min-width:0;
+
+    padding:14px;
+
+    border-radius:15px;
+
+    border:
+        1px solid
+        #294d7c;
+
+    background:#040c1b;
+
+    color:white;
+
+    outline:none;
+
+    font-size:15px;
+}
+
+input::placeholder{
+    color:#7185a5;
+}
+
+input:focus{
+    border-color:#55aaff;
+}
+
+button{
+    width:55px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #56a9ff,
+            #265edb
+        );
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+button:active{
+    transform:scale(.94);
+}
+
+
+/* =====================================================
+   GARIS
+===================================================== */
+
+.section-line{
+    width:100%;
+
+    height:1px;
+
+    margin:
+        60px
+        0
+        30px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(100,180,255,.45),
+            transparent
+        );
+}
+
+
+/* =====================================================
+   INFO CARD
+===================================================== */
+
+.info-card{
+    width:100%;
+
+    padding:21px;
+
+    margin-bottom:18px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18,43,76,.75),
+            rgba(5,13,28,.9)
+        );
+
+    border:
+        1px solid
+        rgba(100,180,255,.2);
+}
+
+.info-title{
+    color:#76c7ff;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    margin-bottom:12px;
+}
+
+.info-card p{
+    color:#aabbd4;
+
+    font-size:14px;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   CREATOR
+===================================================== */
+
+.creator{
+    text-align:center;
+}
+
+
+/* FOTO */
+
+.creator-avatar{
+    width:82px;
+    height:82px;
+
+    margin:
+        0 auto
+        12px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:
+        2px solid
+        rgba(100,190,255,.7);
+
+    box-shadow:
+        0 0 18px
+        rgba(60,150,255,.35);
+}
+
+.creator-avatar img{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+}
+
+
+/* NAMA */
+
+.creator-name{
+    font-size:21px;
+
+    font-weight:bold;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:5px;
+}
+
+.verified{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    width:17px;
+    height:17px;
+
+    border-radius:50%;
+
+    background:#168cff;
+
+    color:white;
+
+    font-size:11px;
+
+    font-weight:bold;
+}
+
+.creator-role{
+    color:#8095b7;
+
+    font-size:12px;
+
+    margin-top:5px;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-top:18px;
+}
+
+.contact{
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    width:100%;
+
+    padding:12px 14px;
+
+    text-decoration:none;
+
+    color:white;
+
+    border-radius:14px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid
+        rgba(110,180,255,.15);
+
+    transition:
+        transform .15s ease;
+}
+
+.contact:active{
+    transform:scale(.98);
+}
+
+
+/* ICON */
+
+.icon{
+    width:38px;
+    height:38px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:11px;
+
+    font-size:20px;
+
+    background:
+        rgba(70,140,255,.12);
+}
+
+.contact-text{
+    text-align:left;
+}
+
+.contact-title{
+    font-size:14px;
+
+    font-weight:bold;
+}
+
+.contact-sub{
+    margin-top:3px;
+
+    color:#7185a5;
+
+    font-size:11px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+    margin-top:22px;
+
+    text-align:center;
+
+    color:#596b88;
+
+    font-size:11px;
+
+    line-height:1.6;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:400px){
+
+    .container{
+        padding-left:15px;
+        padding-right:15px;
+    }
+
+    .title{
+        font-size:29px;
+    }
+
+    .robot-area{
+        transform:scale(.9);
+        margin-top:-5px;
+        margin-bottom:-5px;
+    }
+
+    .chat-bubble{
+        right:-43px;
+        width:185px;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCE MOTION
+   HP yang meminta animasi minimal
+===================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOGO
+===================================================== -->
+
+<div class="corner-logo">
+    ✦ NOVAIX AI
+</div>
+
+
+<!-- =====================================================
+     GALAXY
+===================================================== -->
+
+<div class="galaxy">
+
+    <div class="stars"></div>
+
+    <div class="stars2"></div>
+
+    <div class="nebula"></div>
+
+    <div class="nebula two"></div>
+
+    <div class="planet"></div>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<div class="container">
+
+
+    <div class="title">
+        NOVAIX AI
+    </div>
+
+    <div class="subtitle">
+        Your intelligent galaxy companion
+    </div>
+
+
+    <!-- =================================================
+         ROBOT
+    ================================================== -->
+
+    <div class="robot-area">
+
+        <div class="robot-glow"></div>
+
+        <div class="robot-shadow"></div>
+
+
+        <!-- BUBBLE -->
+
+        <div class="chat-bubble">
+
+            <span class="chat-name">
+                NOVAIX
+            </span>
+
+            <span id="bubbleText">
+                Halo! 👋 Aku NOVAIX.
+                Senang bertemu denganmu!
+            </span>
+
+        </div>
+
+
+        <!-- TANGAN -->
+
+        <div class="robot-hand left"></div>
+
+        <div class="robot-hand right"></div>
+
+
+        <!-- ROBOT -->
+
+        <div class="robot">
+
+
+            <!-- ANTENNA -->
+
+            <div class="antenna">
+
+                <div class="antenna-light"></div>
+
+            </div>
+
+
+            <!-- EARS -->
+
+            <div class="ear left"></div>
+
+            <div class="ear right"></div>
+
+
+            <!-- FACE -->
+
+            <div class="face">
+
+
+                <div class="eyes">
+
+
+                    <div class="eye">
+
+                        <div class="pupil"></div>
+
+                    </div>
+
+
+                    <div class="eye">
+
+                        <div class="pupil"></div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="mouth"></div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         CHAT
+    ================================================== -->
+
+    <div
+        class="chat-box"
+        id="chatBox"
+    >
+
+        <div class="message bot">
+
+            <span class="message-name">
+                NOVAIX
+            </span>
+
+            Halo! 👋 Aku NOVAIX.
+            Aku masih dalam tahap Prototype &
+            Beta, tetapi aku senang bisa menemanimu
+            menjelajahi dunia teknologi. 🌌
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         INPUT
+    ================================================== -->
+
+    <div class="input-area">
+
+        <input
+            id="userInput"
+            type="text"
+            placeholder="Ketik pesan..."
+            autocomplete="off"
+        >
+
+        <button
+            id="sendButton"
+            type="button"
+        >
+            ➤
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         INFO
+    ================================================== -->
+
+    <div class="section-line"></div>
+
+
+<!-- =========================
+     TENTANG NOVAIX
+========================= -->
+
+<div class="info-card novaix-about">
+
+    <div class="info-title">
+        🌌 Tentang NOVAIX
+    </div>
+
+    <div class="novaix-status">
+        🧪 PROTOTYPE &amp; BETA
+    </div>
+
+    <p>
+        <strong>NOVAIX</strong> adalah sebuah proyek AI prototype
+        yang dibuat oleh <strong>Akbar</strong> sebagai langkah kecil
+        untuk memulai perjalanan di dunia teknologi, kecerdasan
+        buatan, dan pengembangan website. 🤖🌌
+    </p>
+
+    <p>
+        NOVAIX dirancang dengan konsep
+        <strong>AI Companion</strong> yang bukan hanya sekadar
+        tempat untuk mengetik pertanyaan dan mendapatkan jawaban,
+        tetapi juga memiliki karakter, wajah, ekspresi, dan nuansa
+        tersendiri. ✨
+    </p>
+
+    <p>
+        Tema <strong>Galaxy 🌌</strong> dipilih karena menggambarkan
+        sesuatu yang luas, misterius, dan terus berkembang.
+        Sama seperti teknologi AI, masih banyak hal yang belum
+        diketahui dan masih bisa dipelajari. 🚀🌠
+    </p>
+
+    <div class="about-subtitle">
+        🤖 Mengapa NOVAIX dibuat?
+    </div>
+
+    <p>
+        NOVAIX dibuat karena <strong>Akbar</strong> ingin belajar
+        dan mencoba membuat sesuatu sendiri.
+    </p>
+
+    <p>
+        Daripada hanya menggunakan teknologi yang sudah ada,
+        proyek ini menjadi tempat untuk memahami bagaimana sebuah
+        website dapat dibuat, bagaimana AI dapat berinteraksi
+        dengan manusia, serta bagaimana sebuah ide sederhana
+        dapat berkembang menjadi sesuatu yang lebih besar. 💻✨
+    </p>
+
+    <p>
+        NOVAIX juga menjadi bukti bahwa sebuah proyek tidak harus
+        langsung sempurna sejak awal.
+        Semuanya bisa dimulai dari <strong>satu ide kecil</strong>,
+        kemudian dikembangkan sedikit demi sedikit. 🌱
+    </p>
+
+    <div class="about-subtitle">
+        🌟 Apa tujuan NOVAIX?
+    </div>
+
+    <p>
+        Tujuan utama NOVAIX adalah menjadi sebuah proyek
+        pembelajaran sekaligus eksperimen untuk mengembangkan:
+    </p>
+
+    <div class="about-features">
+        <div>🧠 Artificial Intelligence</div>
+        <div>💻 Web Development</div>
+        <div>🎨 UI &amp; Visual Design</div>
+        <div>🤖 Interaksi manusia dengan AI</div>
+        <div>🌌 Animasi dan karakter AI</div>
+        <div>🚀 Eksperimen teknologi baru</div>
+    </div>
+
+    <p>
+        Ke depannya, NOVAIX diharapkan dapat berkembang menjadi
+        AI Companion yang lebih interaktif, lebih pintar,
+        dan memiliki karakter yang semakin hidup.
+    </p>
+
+    <div class="about-subtitle">
+        🧪 Status NOVAIX
+    </div>
+
+    <p>
+        <strong>NOVAIX saat ini masih berada dalam tahap
+        Prototype &amp; Beta.</strong>
+    </p>
+
+    <p>
+        Artinya, proyek ini <strong>belum sepenuhnya selesai</strong>
+        dan masih terus dikembangkan.
+        Beberapa fitur mungkin masih sederhana, belum sempurna,
+        atau bahkan dapat mengalami error.
+        Itu merupakan bagian dari proses pengembangan. 🔧
+    </p>
+
+    <p>
+        Setiap perubahan, percobaan, dan perbaikan menjadi bagian
+        dari perjalanan NOVAIX untuk berkembang menjadi lebih baik.
+    </p>
+
+    <div class="about-subtitle">
+        👨‍💻 Dibuat oleh Akbar
+    </div>
+
+    <p>
+        NOVAIX dibuat oleh <strong>Akbar</strong> sebagai proyek
+        pribadi untuk belajar, bereksperimen, dan mencoba
+        sesuatu yang baru.
+    </p>
+
+    <p>
+        Bagi Akbar, NOVAIX bukan hanya sebuah website.
+        NOVAIX adalah <strong>awal dari sebuah perjalanan</strong>
+        untuk memahami teknologi dan membangun sesuatu dari nol. 🌌
+    </p>
+
+    <p>
+        Mungkin saat ini NOVAIX masih sederhana.
+        Namun setiap proyek besar juga selalu dimulai
+        dari sesuatu yang kecil.
+    </p>
+
+    <div class="novaix-quote">
+        🚀 "Start small. Learn. Build. Improve. Repeat."
+    </div>
+
+    <div class="about-subtitle">
+        🌌 Masa depan NOVAIX
+    </div>
+
+    <p>
+        Perjalanan NOVAIX masih panjang.
+        Ke depannya, berbagai fitur baru dapat ditambahkan,
+        mulai dari kemampuan AI yang lebih pintar, percakapan
+        yang lebih natural, karakter robot yang lebih hidup,
+        ekspresi yang lebih banyak, hingga berbagai fitur
+        interaktif lainnya. 🤖✨
+    </p>
+
+    <p>
+        Tidak ada yang tahu seberapa jauh NOVAIX akan berkembang.
+    </p>
+
+    <p class="novaix-ending">
+        Yang pasti, <strong>perjalanannya dimulai dari sini.</strong> 🌠
+    </p>
+
+</div>
+
+
+<style>
+
+/* =========================
+   NOVAIX ABOUT
+========================= */
+
+.novaix-about p{
+    color:#aab9d1;
+    font-size:14px;
+    line-height:1.75;
+    margin-bottom:16px;
+}
+
+
+/* SUB JUDUL */
+
+.about-subtitle{
+    color:#75c5ff;
+    font-size:17px;
+    font-weight:bold;
+    margin:26px 0 12px;
+}
+
+
+/* STATUS */
+
+.novaix-status{
+    display:inline-block;
+
+    margin-bottom:20px;
+    padding:8px 13px;
+
+    border-radius:12px;
+
+    color:#ffd86b;
+
+    font-size:11px;
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    background:rgba(255,190,40,.10);
+
+    border:1px solid rgba(255,193,7,.45);
+
+    box-shadow:
+        0 0 12px rgba(255,193,7,.12);
+
+}
+
+
+/* FITUR */
+
+.about-features{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+
+    margin:15px 0 20px;
+}
+
+.about-features div{
+    padding:11px 13px;
+
+    border-radius:12px;
+
+    color:#c5d5eb;
+
+    font-size:13px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(110,180,255,.12);
+}
+
+
+/* QUOTE */
+
+.novaix-quote{
+    margin:22px 0;
+
+    padding:16px;
+
+    text-align:center;
+
+    border-radius:15px;
+
+    color:#9ed7ff;
+
+    font-size:14px;
+    font-style:italic;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(50,110,190,.12),
+            rgba(80,60,180,.08)
+        );
+
+    border:1px solid rgba(100,180,255,.2);
+
+    box-shadow:
+        0 0 20px rgba(50,130,255,.08);
+}
+
+
+/* PENUTUP */
+
+.novaix-ending{
+    text-align:center;
+
+    margin-top:22px !important;
+    margin-bottom:0 !important;
+
+    color:#75c5ff !important;
+
+    font-size:15px !important;
+}
+
+</style>
+
+
+    <!-- =================================================
+         CREATOR
+    ================================================== -->
+
+    <div class="info-card creator">
+
+
+        <!-- FOTO KADAL -->
+
+        <div class="creator-avatar">
+
+            <img
+                src="1000226447.jpeg"
+                alt="Foto Creator NOVAIX"
+                loading="lazy"
+            >
+
+        </div>
+
+
+        <!-- NAMA -->
+
+        <div class="creator-name">
+
+            Akbar Idhofi
+
+            <span class="verified">
+                ✓
+            </span>
+
+        </div>
+
+
+        <div class="creator-role">
+
+            Creator & Developer
+
+        </div>
+
+
+        <!-- CONTACT -->
+
+        <div class="contact-list">
+
+
+            <!-- INSTAGRAM -->
+
+            <a
+                class="contact"
+                href="https://www.instagram.com/barr_0a/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="icon">
+                    📸
+                </div>
+
+
+                <div class="contact-text">
+
+                    <div class="contact-title">
+
+                        Instagram
+
+                    </div>
+
+
+                    <div class="contact-sub">
+
+                        @barr_0a
+                        <span class="verified">
+                            ✓
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- WHATSAPP -->
+
+            <a
+                class="contact"
+                href="https://wa.me/+6285704309385"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="icon">
+                    💬
+                </div>
+
+
+                <div class="contact-text">
+
+                    <div class="contact-title">
+
+                        WhatsApp
+
+                    </div>
+
+
+                    <div class="contact-sub">
+
+                        Chat dengan creator
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- EMAIL -->
+
+            <a
+                class="contact"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=barrrxy@gmail.com"
+            >
+
+                <div class="icon">
+                    ✉️
+                </div>
+
+
+                <div class="contact-text">
+
+                    <div class="contact-title">
+
+                        Email
+
+                    </div>
+
+
+                    <div class="contact-sub">
+
+                        Hubungi melalui email
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- BUG -->
+
+            <a
+                class="contact"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=barrrxy@gmail.com&su=Laporan%20Bug%20NOVAIX"
+            >
+
+                <div class="icon">
+                    🐞
+                </div>
+
+
+                <div class="contact-text">
+
+                    <div class="contact-title">
+
+                        Lapor Bug
+
+                    </div>
+
+
+                    <div class="contact-sub">
+
+                        Bantu menemukan masalah NOVAIX
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <div class="footer">
+
+        NOVAIX AI • Prototype & Beta<br>
+
+        Created by Akbar Idhofi 🌌
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   ELEMENT
+===================================================== */
+
+const input =
+    document.getElementById("userInput");
+
+const button =
+    document.getElementById("sendButton");
+
+const chatBox =
+    document.getElementById("chatBox");
+
+const bubbleText =
+    document.getElementById("bubbleText");
+
+
+
+/* =====================================================
+   TAMBAH PESAN
+===================================================== */
+
+function addMessage(text,type){
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "message " + type;
+
+
+    if(type === "bot"){
+
+        const name =
+            document.createElement("span");
+
+        name.className =
+            "message-name";
+
+        name.textContent =
+            "NOVAIX";
+
+
+        message.appendChild(name);
+
+        message.appendChild(
+            document.createTextNode(text)
+        );
+
+    }
+
+    else{
+
+        message.textContent =
+            text;
+
+    }
+
+
+    chatBox.appendChild(message);
+
+
+    chatBox.scrollTop =
+        chatBox.scrollHeight;
+
+}
+
+
+/* =====================================================
+   RESPONS NOVAIX
+===================================================== */
+
+function getResponse(text){
+
+    const message =
+        text.toLowerCase().trim();
+
+
+    /* SAPAAN */
+
+    if(
+        message.includes("halo") ||
+        message.includes("hai") ||
+        message.includes("hi") ||
+        message.includes("hello")
+    ){
+
+        return "Halo! 👋✨ Senang melihatmu lagi. Aku NOVAIX, teman kecilmu dari galaxy ini. 🌌";
+
+    }
+
+
+    /* SIAPA */
+
+    if(
+        message.includes("siapa kamu") ||
+        message.includes("kamu siapa")
+    ){
+
+        return "Aku NOVAIX 🤖🌌, AI prototype & beta yang diciptakan oleh Akbar Idhofi.";
+
+    }
+
+
+    /* NAMA */
+
+    if(
+        message.includes("nama kamu") ||
+        message === "nama"
+    ){
+
+        return "Namaku NOVAIX. 🤖✨ Kedengarannya keren, kan?";
+
+    }
+
+
+    /* AKBAR */
+
+    if(
+        message.includes("akbar") ||
+        message.includes("creator") ||
+        message.includes("pembuat")
+    ){
+
+        return "Aku diciptakan oleh Akbar Idhofi. 🚀 Dia adalah Creator & Developer dari NOVAIX AI.";
+
+    }
+
+
+    /* GALAXY */
+
+    if(
+        message.includes("galaxy") ||
+        message.includes("angkasa") ||
+        message.includes("luar angkasa") ||
+        message.includes("bintang")
+    ){
+
+        return "Indah ya? 🌌 Galaxy adalah bagian dari identitas NOVAIX. Rasanya seperti kita sedang menjelajah ruang angkasa bersama.";
+
+    }
+
+
+    /* AI */
+
+    if(
+        message.includes("apa itu ai") ||
+        message === "ai"
+    ){
+
+        return "AI adalah teknologi yang membuat komputer dapat melakukan tugas yang membutuhkan kemampuan seperti memahami bahasa, mengenali pola, dan memberikan respons.";
+
+    }
+
+
+    /* PROTOTYPE */
+
+    if(
+        message.includes("prototype") ||
+        message.includes("beta")
+    ){
+
+        return "Aku masih Prototype & Beta 🤖. Jadi aku belum sepenuhnya selesai dan masih terus dikembangkan.";
+
+    }
+
+
+    /* TERIMA KASIH */
+
+    if(
+        message.includes("terima kasih") ||
+        message.includes("makasih") ||
+        message.includes("thanks")
+    ){
+
+        return "Sama-sama! 😄✨ Senang bisa menemanimu.";
+
+    }
+
+
+    /* PAGI */
+
+    if(
+        message.includes("selamat pagi")
+    ){
+
+        return "Selamat pagi! ☀️ Semoga hari ini berjalan menyenangkan. NOVAIX siap menemanimu! 🚀";
+
+    }
+
+
+    /* MALAM */
+
+    if(
+        message.includes("selamat malam")
+    ){
+
+        return "Selamat malam 🌌 Jangan lupa istirahat. Aku akan tetap berada di galaxy NOVAIX. 🤖✨";
+
+    }
+
+
+    /* BOSAN */
+
+    if(
+        message.includes("bosan")
+    ){
+
+        return "Kalau bosan, ayo ngobrol denganku 😄. Kita bisa membahas teknologi, coding, game, atau apa saja yang kamu suka.";
+
+    }
+
+
+    /* CODING */
+
+    if(
+        message.includes("coding") ||
+        message.includes("program")
+    ){
+
+        return "Coding itu seperti memberi instruksi kepada komputer. 💻🤖 Pelan-pelan saja, yang penting terus mencoba.";
+
+    }
+
+
+    /* DEFAULT */
+
+    return "Hmm... menarik! 🤖✨ Aku masih Prototype & Beta, jadi belum bisa memahami semua hal. Tapi aku senang kamu mengajakku ngobrol! 🌌";
+
+}
+
+
+
+/* =====================================================
+   ANIMASI MULUT SAAT BERBICARA
+===================================================== */
+
+function talking(){
+
+    const mouth =
+        document.querySelector(".mouth");
+
+    mouth.style.height =
+        "22px";
+
+    mouth.style.border =
+        "3px solid #70c9ff";
+
+    mouth.style.borderRadius =
+        "50%";
+
+
+    setTimeout(function(){
+
+        mouth.style.height =
+            "13px";
+
+        mouth.style.border =
+            "none";
+
+        mouth.style.borderBottom =
+            "3px solid #70c9ff";
+
+        mouth.style.borderRadius =
+            "0 0 30px 30px";
+
+    },220);
+
+}
+
+
+
+/* =====================================================
+   KIRIM PESAN
+===================================================== */
+
+function sendMessage(){
+
+    const text =
+        input.value.trim();
+
+
+    if(!text){
+        return;
+    }
+
+
+    addMessage(
+        text,
+        "user"
+    );
+
+
+    input.value = "";
+
+
+    bubbleText.textContent =
+        "Hmm... aku sedang berpikir 🤔";
+
+
+    /* robot bicara */
+
+    talking();
+
+
+    setTimeout(function(){
+
+        const response =
+            getResponse(text);
+
+
+        addMessage(
+            response,
+            "bot"
+        );
+
+
+        bubbleText.textContent =
+            response;
+
+
+        talking();
+
+
+    },550);
+
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+button.addEventListener(
+    "click",
+    sendMessage
+);
+
+
+/* =====================================================
+   ENTER KEY
+===================================================== */
+
+input.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            event.preventDefault();
+
+            sendMessage();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   SAPAAN OTOMATIS
+===================================================== */
+
+const greetings = [
+
+    "Halo! 👋",
+
+    "Hei! 🤖",
+
+    "Aku NOVAIX! 🌌",
+
+    "Senang melihatmu! ✨"
+
+];
+
+let greetingIndex = 0;
+
+
+/* sesekali mengganti bubble */
+
+setInterval(function(){
+
+    if(
+        document.activeElement !== input &&
+        !input.value
+    ){
+
+        greetingIndex++;
+
+        if(
+            greetingIndex >=
+            greetings.length
+        ){
+
+            greetingIndex = 0;
+
+        }
+
+
+        bubbleText.textContent =
+            greetings[greetingIndex];
+
+    }
+
+},8000);
+
+
+</script>
+
+</body>
+</html>
